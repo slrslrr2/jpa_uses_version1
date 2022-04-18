@@ -1,12 +1,14 @@
 package jpabook.jpashop;
 
 import jpabook.jpashop.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Repository
+//@Repository
+//@RequiredArgsConstructor
 public class MemberRepository {
 
     @PersistenceContext
