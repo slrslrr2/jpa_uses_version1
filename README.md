@@ -235,3 +235,57 @@ for문으로 option을 넣을 수 있다.
           th:text="${member.name}"/>
 </select>
 ```
+
+## @ModelAttribute
+
+```java
+@GetMapping("/orders")
+
+/**
+파라미터에 @ModelAttribute("orderSearch") OrderSearch orderSearch
+위 내용을 입력하면
+	model.addAttribute("orderSearch", orderSearch); 자동으로 이 내용이 포함된다
+**/
+public String orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model){
+  List<Order> orders = orderService.findOrders(orderSearch);
+  model.addAttribute("orders", orders);
+
+  return "order/orderList";
+}
+```
+
+>파라미터에 @ModelAttribute("orderSearch") OrderSearch orderSearch
+>위 내용을 입력하면
+>model.addAttribute("orderSearch", orderSearch); 자동으로 이 내용이 포함된다
+>
+> 그렇기에 아래 html에서 다음과 같이 사용 가능하다
+>
+>```java
+><form th:object="${orderSearch}" class="form-inline">
+>```
+
+
+
+## Enum 값 가져오기
+
+```java
+public enum OrderStatus {
+    ORDER, CANCLE
+}
+```
+
+
+
+OrderStatus Enum으로 선언된 값을 모두 가져오고싶다면 아래와 같이 사용 가능하다.
+
+>```java
+><select th:field="*{orderStatus}" class="form-control">
+> 	<option value="">주문상태</option>
+>  <option th:each= "status : ${T(jpabook.jpashop.domain.OrderStatus).values()}"
+>              th:value="${status}"
+>              th:text="${status}">
+>  </option>
+></select>
+>```
+
+
