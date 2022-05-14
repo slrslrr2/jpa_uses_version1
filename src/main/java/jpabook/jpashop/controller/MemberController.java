@@ -53,7 +53,7 @@ public class MemberController {
 
     @GetMapping("/members")
     public String list(Model model){
-        List<Member> members = memberservice.findMember();
+        List<Member> members = memberservice.findMembers();
         model.addAttribute("members", members);
         return "members/memberList";
     }

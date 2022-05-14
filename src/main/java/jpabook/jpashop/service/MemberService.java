@@ -34,11 +34,17 @@ public class MemberService {
     /**
      * 전체 회원 조회
      */
-    public List<Member> findMember(){
+    public List<Member> findMembers(){
         return memberRepository.findAll();
     }
 
     public Member findOne(Long id){
         return memberRepository.findOne(id);
+    }
+
+    @Transactional
+    public void update(Long id, String name){
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
     }
 }

@@ -19,7 +19,9 @@
         <br>
         <div class="form-group">
             <label th:for="city">도시</label>
-            <input type="text" th:field="*{city}" class="form-control" placeholder="도시를 입력하세요">
+            <input type="text" th:field="*{city}" class="form-control" placeholder="도시를 입력하세요"
+                   th:errorclass="fieldError">
+            <p th:errors="*{city}">Incorrect date</p>
         </div>
         <br>
 
