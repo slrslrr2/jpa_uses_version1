@@ -15,7 +15,6 @@ import java.util.List;
 @Table(name="orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
-
     @Id
     @GeneratedValue
     @Column(name="order_id")
